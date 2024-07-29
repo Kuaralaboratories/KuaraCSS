@@ -1,2 +1,2 @@
-# KuaraUI
-KuaraUI is CSS-in-JS library for developing CSS much more easier. KuaraUI is for developers.
+# KuaraCSS
+KuaraCSS is CSS-in-JS library for developing CSS much more easier. KuaraCSS is for developers.

@@ -1,0 +1,101 @@
+{
+  "name": "kuaracss",
+  "version": "1.0.0",
+  "description": "KuaraCSS is CSS-in-JS library for developing CSS much more easier. KuaraCSS is for developers.",
+  "main": "./index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kuaralaboratories/KuaraCSS.git"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "types": "./types/index.d.ts",
+  "typesVersions": {
+    "<4.4": {
+      "*": [
+        "./types/ts4.3/index.d.ts"
+      ]
+    }
+  },
+  "keywords": [
+    "styles",
+    "css",
+    "css-in-js",
+    "babel",
+    "babel-plugin",
+    "next",
+    "nextjs",
+    "nextjs-plugin",
+    "webpack"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/types": "^7.8.3",
+    "@rollup/pluginutils": "^3.0.4",
+    "csstype": "^3.0.6",
+    "fast-json-stable-stringify": "^2.1.0",
+    "inline-style-expand-shorthand": "1.6.0",
+    "json5": "^2.2.3",
+    "known-css-properties": "^0.19.0",
+    "loader-utils": "^3.2.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "murmurhash-js": "^1.0.0",
+    "postcss": "^8.4.7",
+    "postcss-discard-duplicates": "^5.1.0",
+    "postcss-selector-parser": "^6.0.2",
+    "sort-css-media-queries": "^2.0.4",
+    "webpack-sources": "^2.2.0",
+    "webpack-virtual-modules": "^0.4.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@stryker-mutator/core": "^5.0.1",
+    "@stryker-mutator/jest-runner": "^5.0.1",
+    "babel-jest": "^26.1.0",
+    "babel-plugin-tester": "^10.0.0",
+    "dtslint": "^4.0.7",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
+    "prettier": "2.2.1",
+    "rollup": "^1.29.0",
+    "typescript": "^4.4.2",
+    "vite": "^4.0.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:types": "dtslint types",
+    "test:mutation": "stryker run",
+    "test:examples": "./scripts/test-examples.sh",
+    "lint": "eslint \"**/*.js\" --fix",
+    "lint:check": "eslint \"**/*.js\"",
+    "format": "prettier \"**/*.{js,ts}\" --write",
+    "format:check": "prettier \"**/*.{js,ts}\" --check"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "npm run format"
+    ],
+    "*.ts": [
+      "npm run format"
+    ]
+  },
+  "author": "Yakup Cemil Kayabaş",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Kuaralaboratories/KuaraCSS/issues"
+  },
+  "homepage": "https://github.com/Kuaralaboratories/KuaraCSS#readme"
+}
