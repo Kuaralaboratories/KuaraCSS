@@ -4,7 +4,7 @@ const compile = require("../compile.js");
 it("only supports Member- and CallExpression on styles", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -12,7 +12,7 @@ const styles = kuaracss.create({
 foo(styles);
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
-    "unknown: SyntaxError: Return value from kuaracss.create has to be called as a function or accessed as an object
+    "unknown: SyntaxError: Return value from kuaracss.sheet has to be called as a function or accessed as an object
       6 |   }
       7 | });
     > 8 | foo(styles);
@@ -24,7 +24,7 @@ foo(styles);
 it("supports React Hot Loader call", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -37,7 +37,7 @@ reactHotLoader.register(styles);
 it("throws on invalid React Hot Loader call", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -45,7 +45,7 @@ const styles = kuaracss.create({
 foo.register(styles);
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
-    "unknown: SyntaxError: Return value from kuaracss.create has to be called as a function or accessed as an object
+    "unknown: SyntaxError: Return value from kuaracss.sheet has to be called as a function or accessed as an object
       6 |   }
       7 | });
     > 8 | foo.register(styles);
@@ -57,7 +57,7 @@ foo.register(styles);
 it("throws on invalid React Hot Loader call2", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -65,7 +65,7 @@ const styles = kuaracss.create({
 reactHotLoader.foo(styles);
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
-    "unknown: SyntaxError: Return value from kuaracss.create has to be called as a function or accessed as an object
+    "unknown: SyntaxError: Return value from kuaracss.sheet has to be called as a function or accessed as an object
       6 |   }
       7 | });
     > 8 | reactHotLoader.foo(styles);
@@ -80,7 +80,7 @@ import kuaracss from 'kuaracss';
 kuaracss.foo;
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
-    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.create(), and kuaracss.keyframes()
+    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.sheet(), and kuaracss.keyframes()
       1 |
       2 | import kuaracss from 'kuaracss';
     > 3 | kuaracss.foo;
@@ -89,46 +89,46 @@ kuaracss.foo;
   `);
 });
 
-it("create throws when called without arguments", () => {
+it("sheet throws when called without arguments", () => {
   const input = `
 import kuaracss from 'kuaracss';
-kuaracss.create();
+kuaracss.sheet();
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
-    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.create(), and kuaracss.keyframes()
+    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.sheet(), and kuaracss.keyframes()
       1 |
       2 | import kuaracss from 'kuaracss';
-    > 3 | kuaracss.create();
+    > 3 | kuaracss.sheet();
         | ^^^^^^
       4 |   "
   `);
 });
 
-it("create throws when called multiple arguments", () => {
+it("sheet throws when called multiple arguments", () => {
   const input = `
 import kuaracss from 'kuaracss';
-kuaracss.create({}, {});
+kuaracss.sheet({}, {});
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
-    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.create(), and kuaracss.keyframes()
+    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.sheet(), and kuaracss.keyframes()
       1 |
       2 | import kuaracss from 'kuaracss';
-    > 3 | kuaracss.create({}, {});
+    > 3 | kuaracss.sheet({}, {});
         | ^^^^^^
       4 |   "
   `);
 });
 
-it("create throws non-object argument", () => {
+it("sheet throws non-object argument", () => {
   const input = `
 import kuaracss from 'kuaracss';
-kuaracss.create(1);
+kuaracss.sheet(1);
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
-    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.create(), and kuaracss.keyframes()
+    "unknown: Unsupported use. Supported uses are: kuaracss(), kuaracss.sheet(), and kuaracss.keyframes()
       1 |
       2 | import kuaracss from 'kuaracss';
-    > 3 | kuaracss.create(1);
+    > 3 | kuaracss.sheet(1);
         | ^^^^^^
       4 |   "
   `);
@@ -137,7 +137,7 @@ kuaracss.create(1);
 it("styles throws on non-existing style key", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -157,7 +157,7 @@ styles('blue');
 it("styles throws on unsupported operator", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -177,7 +177,7 @@ styles(foo & 'blue');
 it("styles throws on failure to evaluate values", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: BLUE
   }
@@ -186,7 +186,7 @@ styles('blue');
   `;
   expect(() => compile(input)).toThrowErrorMatchingInlineSnapshot(`
     "unknown: Could not evaluate value
-      3 | const styles = stkuaracssyle9.create({
+      3 | const styles = stkuaracssyle9.sheet({
       4 |   default: {
     > 5 |     color: BLUE
         |            ^^^^
@@ -199,7 +199,7 @@ styles('blue');
 it("styles throws on spread", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'red'
   }
@@ -219,7 +219,7 @@ styles({ ...foo })
 it("styles throws non-string logical right hand", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   red: {
     color: 'red'
   }
@@ -239,7 +239,7 @@ styles(foo && red)
 it("styles throws non-string ternary left hand", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   red: {
     color: 'red'
   }
@@ -259,7 +259,7 @@ styles(foo ? red : 'red')
 it("styles throws non-string ternary right hand", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   red: {
     color: 'red'
   }
@@ -279,7 +279,7 @@ styles(foo ? 'red' : red)
 it("styles throws on identifier", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'red'
   }
@@ -299,7 +299,7 @@ styles(foo)
 it("styles throws on dynamic key", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   red: {
     color: 'red'
   }
@@ -319,7 +319,7 @@ styles({ [red]: foo })
 it("throws on unsupported logical expression", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   red: {
     color: 'red'
   }

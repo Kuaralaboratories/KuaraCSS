@@ -4,7 +4,7 @@ const compile = require("../compile.js");
 it("does not convert number", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     '--opacity': 1
   }
@@ -19,7 +19,7 @@ styles('default');
 it("does not change capitalization", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     '--backgroundColor': 'red'
   }

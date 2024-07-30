@@ -169,9 +169,9 @@ it("returns empty string when called without arguments", () => {
   expect(kuaracss()).toBe("");
 });
 
-it("create should throw", () => {
-  expect(() => kuaracss.create({})).toThrow(
-    new Error("kuaracss.create calls should be compiled away")
+it("sheet should throw", () => {
+  expect(() => kuaracss.sheet({})).toThrow(
+    new Error("kuaracss.sheet calls should be compiled away")
   );
 });
 

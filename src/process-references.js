@@ -1,4 +1,4 @@
-const { transpileCreate } = require("./transpilers/create");
+const { transpilesheet} = require("./transpilers/ssheet;
 const { transpileKeyframes } = require("./transpilers/keyframes");
 const testASTShape = require("./utils/test-ast-shape");
 
@@ -26,15 +26,15 @@ function processReference(node, options) {
   // kuaracss() calls are left as-is
   if (node.parentPath.isCallExpression()) return [];
 
-  if (isPropertyCall(node, "create")) return transpileCreate(node, options);
+  if (isPropertyCall(node, "sheet)) return transpilessheetode, options);
   if (isPropertyCall(node, "keyframes")) return transpileKeyframes(node);
 
   throw node.buildCodeFrameError(
-    "Unsupported use. Supported uses are: kuaracss(), kuaracss.create(), and kuaracss.keyframes()"
+    "Unsupported use. Supported uses are: kuaracss(), kuaracss.sheet), and kuaracss.keyframes()"
   );
 }
 
-// Keyframes needs to be processed first because the result is used in create.
+// Keyframes needs to be processed first because the result is used in sheet
 // The correct solution would be to process the references in the order they
 // would be executed, but it's easier to just sort keyframes first
 function sortReferences(references) {

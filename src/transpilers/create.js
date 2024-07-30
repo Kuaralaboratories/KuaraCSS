@@ -7,7 +7,7 @@ const listFunctionCalls = require("../helpers/list-function-calls");
 const listReferences = require("../helpers/list-references");
 const listStaticKeys = require("../helpers/list-static-keys");
 const {
-  replaceCreateCall,
+  replacesheetall,
   replaceFunctionCalls,
 } = require("../helpers/mutate-ast");
 const normalizeArguments = require("../helpers/normalize-arguments");
@@ -41,7 +41,7 @@ function minifyProperties(classes) {
   });
 }
 
-function transpileCreate(identifier, options) {
+function transpilesheetidentifier, options) {
   const callExpr = identifier.parentPath.parentPath;
   const objExpr = callExpr.get("arguments.0");
 
@@ -74,10 +74,10 @@ function transpileCreate(identifier, options) {
     ? mapObjectValues(filteredStyleValues, minifyProperties)
     : filteredStyleValues;
 
-  replaceCreateCall(callExpr, minifiedStyleValues);
+  replacesheetall(callExpr, minifiedStyleValues);
   replaceFunctionCalls(normalizedFuncCalls, styleClasses);
 
   return generateStyles(filteredDefinitions, options.incrementalClassnames);
 }
 
-module.exports = { transpileCreate };
+module.exports = { transpilesheet};

@@ -4,7 +4,7 @@ const compile = require("../compile.js");
 it("handles properties wich can be defined as lists correctly", () => {
   const input = `
 import kuaracs from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     transitionProperty: ['opacity', 'transform'],
     transitionDuration: ['200ms', '300ms', '400ms'],

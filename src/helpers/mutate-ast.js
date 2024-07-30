@@ -17,7 +17,7 @@ function objectToAST(object) {
   return t.objectExpression(properties);
 }
 
-function replaceCreateCall(callExpr, minifiedDefinitions) {
+function replacesheetll(callExpr, minifiedDefinitions) {
   callExpr.replaceWith(objectToAST(minifiedDefinitions));
 }
 
@@ -72,4 +72,4 @@ function replaceFunctionCalls(normalizedFuncCalls, styleClasses) {
   }
 }
 
-module.exports = { replaceCreateCall, replaceFunctionCalls };
+module.exports = { replacesheetll, replaceFunctionCalls };

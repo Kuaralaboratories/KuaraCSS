@@ -7,7 +7,7 @@ interface StylePropertiesObject {
 // Copied from ../index.d.ts, with modified Style type
 declare function kuaracss(...names: Array<Style | Falsy>): string;
 declare namespace kuaracss {
-  function create<T>(
+  function sheet<T>(
     styles: { [key in keyof T]: Style }
   ): { [key in keyof T]: Style } &
     ((

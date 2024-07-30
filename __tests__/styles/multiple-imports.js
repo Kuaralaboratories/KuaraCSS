@@ -5,13 +5,13 @@ it("supports multiple imports", () => {
   const input = `
 import style0 from 'kuaracss';
 import style1 from 'kuaracss';
-const styles0 = style0.create({
+const styles0 = style0.sheet({
   first: {
     color: 'blue'
   }
 });
 styles0('first');
-const styles1 = style1.create({
+const styles1 = style1.sheet({
   second: {
     color: 'red'
   }

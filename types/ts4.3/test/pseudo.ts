@@ -1,6 +1,6 @@
 import kuaracss from "kuaracss";
 
-kuaracss.create({
+kuaracss.sheet({
   pseudo: {
     ":hover": {
       "::before": {

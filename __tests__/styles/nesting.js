@@ -4,7 +4,7 @@ const compile = require("../compile.js");
 it("supports nesting", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     '::before': {
       opacity: 1
@@ -21,7 +21,7 @@ styles('default');
 it("supports at rules", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     '@media (max-width: 1000px)': {
       opacity: 1
@@ -44,7 +44,7 @@ styles('default');
 it("supports deep nesting", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     '@media (max-width: 1000px)': {
       '@media (max-width: 200px)': {
@@ -69,7 +69,7 @@ styles('default');
 it("generates correct class names", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     '::before': {
       opacity: 1
@@ -91,7 +91,7 @@ styles('default', 'hidden');
 it("translates old pseudo element", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     ':before': { opacity: 1 },
     ':after': { opacity: 1 },

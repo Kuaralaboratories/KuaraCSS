@@ -1,6 +1,6 @@
 import kuaracss from "kuaracss";
 
-kuaracss.create({
+kuaracss.sheet({
   declaration: {
     // $ExpectError
     "--undefined": "value",
@@ -17,7 +17,7 @@ declare module "kuaracss" {
   }
 }
 
-kuaracss.create({
+kuaracss.sheet({
   declaration: {
     "--bg-color": "blue",
   },

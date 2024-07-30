@@ -1,5 +1,5 @@
 import kuaracss from "kuaracss";
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     "@media (max-width: 1000px)": {
       ":hover": {

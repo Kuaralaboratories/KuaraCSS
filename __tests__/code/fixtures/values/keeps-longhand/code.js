@@ -1,5 +1,5 @@
 import kuaracss from "kuaracss";
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     paddingTop: ".5rem",
     padding: "1rem",

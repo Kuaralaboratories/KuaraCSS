@@ -30,8 +30,8 @@ export default function kuaracss(...styles) {
   return getValues(merged).join(" ");
 }
 
-kuaracss.create = () => {
-  throw new Error("kuaracss.create calls should be compiled away");
+kuaracss.sheet = () => {
+  throw new Error("kuaracss.sheet calls should be compiled away");
 };
 
 kuaracss.keyframes = () => {

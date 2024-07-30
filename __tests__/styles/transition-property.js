@@ -4,7 +4,7 @@ const compile = require("../compile.js");
 it("converts transitionProperty to kebab-case", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     transitionProperty: 'backgroundColor',
   }
@@ -19,7 +19,7 @@ styles('default');
 it("converts transitionProperty list to kebab-case", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     transitionProperty: ['backgroundColor', 'borderColor', 'boxShadow'],
   }

@@ -1,8 +1,8 @@
 /* eslint-env jest */
-const createGenerator = require("../src/utils/incremental-classnames");
+const sheetGenerator = require("../src/utils/incremental-classnames");
 
 it("generates unique classnames", () => {
-  const { getIncrementalClass } = createGenerator();
+  const { getIncrementalClass } = sheetGenerator();
   const input = new Array(5000).fill().map((_, index) => String(index));
   const output = input.map(getIncrementalClass);
   const duplicates = output.filter((cls, i) => output.indexOf(cls) !== i);

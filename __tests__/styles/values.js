@@ -4,7 +4,7 @@ const compile = require("../compile.js");
 it("converts paddingLeft to pixels", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     paddingLeft: 2
   }
@@ -19,7 +19,7 @@ styles('default');
 it("does not convert opacity to pixels", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     opacity: 1
   }
@@ -34,7 +34,7 @@ styles('default');
 it("expands shorthand", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     padding: '1rem'
   }
@@ -54,7 +54,7 @@ styles('default');
 it("does not override longhand", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     paddingTop: '.5rem',
     padding: '1rem',
@@ -76,7 +76,7 @@ styles('default');
 it("converts fontSize pixels", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     fontSize: 14
   }
@@ -91,7 +91,7 @@ styles('default');
 it("accepts an array", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     textDecorationLine: ['underline', 'overline']
   }
@@ -107,7 +107,7 @@ it("supports constants", () => {
   const input = `
 import kuaracss from 'kuaracss';
 const BLUE = 'blue';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: BLUE
   }
@@ -122,7 +122,7 @@ styles('default');
 it("removes unused styles", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -136,7 +136,7 @@ const styles = kuaracss.create({
 it("keeps styles used in styles()", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   },
@@ -154,7 +154,7 @@ styles('default');
 it("keeps styles used as object", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   },
@@ -172,7 +172,7 @@ styles.default;
 it("supports static bracket access", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   },
@@ -190,7 +190,7 @@ styles['default']
 it("supports dynamic bracket access", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   blue: {
     color: 'blue'
   },
@@ -208,7 +208,7 @@ styles[blue]
 it("supports arrow function", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -223,7 +223,7 @@ const get = state => styles(state && 'default');
 it("outputs no styles without declaration", () => {
   const input = `
 import kuaracss from 'kuaracss';
-kuaracss.create({
+kuaracss.sheet({
   default: {
     color: 'blue'
   }
@@ -237,7 +237,7 @@ kuaracss.create({
 it("supports spread assignment", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const { ...styles } = kuaracss.create({
+const { ...styles } = kuaracss.sheet({
   blue: {
     color: 'blue'
   }
@@ -251,7 +251,7 @@ const { ...styles } = kuaracss.create({
 it("removes unused destructured keys", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const { blue } = kuaracss.create({
+const { blue } = kuaracss.sheet({
   blue: {
     color: 'blue'
   },
@@ -267,7 +267,7 @@ const { blue } = kuaracss.create({
 it("supports spread use", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   blue: {
     color: 'blue'
   }
@@ -282,7 +282,7 @@ console.log({ ...styles });
 it("supports member expression access", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const blue = kuaracss.create({
+const blue = kuaracss.sheet({
   blue: {
     color: 'blue'
   },

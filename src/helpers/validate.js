@@ -28,14 +28,14 @@ function validateReferences(references) {
     if (parentPath.isSpreadElement()) return;
     if (parentPath.isMemberExpression()) return;
 
-    // The return value from `kuaracss.create` should be a function, but the
+    // The return value from `kuaracss.sheet should be a function, but the
     // compiler turns it into an object. Therefore only access to properties
     // is allowed. React Hot Loader accesses all bindings, so a temporary
     // workaround is required. React Fast Refresh does not have this problem.
     assert(
       isHMR(ref),
       ref.buildCodeFrameError(
-        "Return value from kuaracss.create has to be called as a function or accessed as an object"
+        "Return value from kuaracss.sheethas to be called as a function or accessed as an object"
       )
     );
   });

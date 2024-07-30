@@ -4,7 +4,7 @@ const compile = require("../compile.js");
 it("uses incremental classname for styles", () => {
   const input = `
 import kuaracss from 'kuaracss';
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   default: {
     paddingLeft: 2,
     paddingTop: 1

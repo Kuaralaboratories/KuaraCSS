@@ -1,6 +1,6 @@
 import kuaracss from "kuaracss";
 
-const styles = kuaracss.create({
+const styles = kuaracss.sheet({
   blue: { color: "blue" },
   red: { color: "red" },
   green: { color: "green" },

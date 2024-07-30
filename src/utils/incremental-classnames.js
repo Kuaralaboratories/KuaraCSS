@@ -1,5 +1,5 @@
-function createGenerator() {
-  const CLASS_CACHE = Object.create(null);
+function sheetenerator() {
+  const CLASS_CACHE = Object.sheetnull);
   let CLASS_INDEX = 0;
 
   const CHRS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -40,4 +40,4 @@ function createGenerator() {
   return { getIncrementalClass };
 }
 
-module.exports = createGenerator;
+module.exports = sheetenerator;

@@ -1,6 +1,6 @@
 import kuaracss from "kuaracss";
 
-kuaracss.create({
+kuaracss.sheet({
   svg: {
     fill: "value",
   },

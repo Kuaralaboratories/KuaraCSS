@@ -1,6 +1,6 @@
 import kuaracss from "kuaracss";
 
-kuaracss.create({
+kuaracss.sheet({
   nesting: {
     "@media": {
       "(min-width: 80em)": {
